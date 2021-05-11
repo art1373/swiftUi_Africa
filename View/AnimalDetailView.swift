@@ -29,10 +29,38 @@ struct AnimalDetailView: View {
                 Text(animal.headline).font(.headline).multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/).foregroundColor(.accentColor).padding(.horizontal)
                 
                 //GALLERY
+                
                 Group {
                     HeadingView(headingImage: "photo.on.rectangle.angled", headingText: "Wilderness in Pictures")
                     InsetGalleryView(animal: animal)
                 }.padding(.horizontal)
+                
+                //FACTS
+                
+                Group {
+                    HeadingView(headingImage: "questionmark.circle", headingText: "Did you know?")
+                    InsetDetailView(animal: animal).padding(.horizontal)
+                }
+                
+                //DESCRIPTION
+                Group {
+                    HeadingView(headingImage: "info.circle", headingText: "All About \(animal.name)")
+                    Text(animal.description).multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/).layoutPriority(1)
+                }.padding(.horizontal)
+                
+                //MAP
+                
+                Group{
+                    HeadingView(headingImage: "map", headingText: "National Parks")
+                    InsetMapView()
+                }.padding(.horizontal)
+                
+                //LINK
+                Group {
+                    HeadingView(headingImage: "books.vertical", headingText: "Learn More")
+                    WebLinkView(animal: animal)
+                }.padding(.horizontal)
+                
             }//:VSTACK
             .navigationBarTitle("Learn more about \(animal.name)",displayMode: .inline)
         }//:SCROLL
